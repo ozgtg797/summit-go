@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agenda &mdash; Solana Summit Serbia</title>
+<meta name="description" content="Two days, two stages, zero filler. The full Solana Summit Serbia programme.">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png">
+<link rel="preload" href="./fonts/pp-rader/PPRader-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="./agenda.css">
+<style>
+  /* ---------- standalone page ---------- */
+  html, body { background: var(--surface-dark); }
+  /* The site sets body{overflow:hidden}, which makes <body> a scroll
+     container and silently kills position:sticky (body:not(.loaded) is
+     the rule that bites — hence `loaded` on <body>, the site's own
+     post-loader state). `clip` still blocks horizontal scroll but
+     creates no scroll container. */
+  html body { margin: 0; overflow-x: clip; overflow-y: visible; }
+
+  /* The site animates these in with GSAP on scroll; this page is static,
+     so pin them to their finished state. */
+  .agenda__title-highlight-bg { transform: scaleX(1); }
+  .agenda__rule-v { transform: scaleY(1); }
+  .agenda__top-rule { transform: scaleX(1); }
+
+  .agenda { padding-top: 72px; padding-bottom: 140px; }
+  @media (width <= 1023px) { .agenda { padding-top: 40px; padding-bottom: 80px; } }
+
+  /* ---------- day switcher (mobile only) ---------- */
+  .agenda__day-switch { display: none; }
+  .agenda__day-switch-tab {
+    appearance: none; cursor: pointer;
+    font-family: var(--font-label); font-size: var(--font-label-size);
+    font-weight: var(--font-label-weight); letter-spacing: .05em;
+    text-transform: uppercase; color: var(--text-muted-on-dark);
+    background: 0 0; border: 1px solid #e3f42a33; border-radius: 2px;
+    align-items: center; padding: 10px 16px; line-height: 1;
+    transition: color .2s, background-color .2s, border-color .2s;
+    display: inline-flex; flex: 1; justify-content: center;
+  }
+  .agenda__day-switch-tab.is-active {
+    color: var(--black); background: var(--green); border-color: var(--green);
+  }
+
+  @media (width <= 1023px) {
+    .agenda__day-switch {
+      display: flex; gap: 8px;
+      position: sticky; top: 0; z-index: 6;
+      background: var(--surface-dark);
+      padding: 12px var(--grid-edge-inset) 12px;
+      margin: 0 calc(-1 * var(--grid-edge-inset)) 4px;
+      border-bottom: 1px solid var(--border-on-dark);
+    }
+    /* one day at a time */
+    .agenda__grid.is-day-1 .agenda__day[data-day="2"],
+    .agenda__grid.is-day-2 .agenda__day[data-day="1"] { display: none; }
+    .agenda__grid { row-gap: 0; }
+
+    /* stage tabs stay reachable mid-scroll, docked under the day bar */
+    .agenda__stage-tabs {
+      position: sticky; top: var(--day-switch-h, 56px); z-index: 5;
+      background: var(--surface-dark);
+      padding: 12px 16px; margin: 0 calc(-1 * var(--grid-edge-inset)) 8px;
+      border-bottom: 1px solid var(--border-on-dark);
+    }
+    .agenda__stage-tab { flex: 1; justify-content: center; }
+    .agenda__day-label { margin-bottom: 0; }
+  }
+</style>
+</head>
+<body class="dark-mode loaded">
+
+  <section class="agenda" id="agenda">
+    <div class="agenda__header">
+      <div class="agenda__label">
+        <span class="agenda__label-dot"></span>
+        <span>Programme</span>
+      </div>
+      <h2 class="agenda__title"><span class="agenda__title-highlight"><span class="agenda__title-highlight-bg"></span>Two days.</span><br>Zero filler.</h2>
+    </div>
+
+    <div class="agenda__day-switch" role="tablist" aria-label="Select day">
+      <button type="button" class="agenda__day-switch-tab is-active" data-day="1" role="tab" aria-selected="true">Day 1 &middot; Wed 26</button>
+      <button type="button" class="agenda__day-switch-tab" data-day="2" role="tab" aria-selected="false">Day 2 &middot; Thu 27</button>
+    </div>
+
+    <div class="agenda__grid is-day-1">
+      <div class="agenda__rule-v"></div>
+      <div class="agenda__day" data-day="1">
+        <div class="agenda__day-label"><span>Day 1</span><span>WED, AUGUST 26</span></div>
+        <div class="agenda__stage-tabs" role="tablist" aria-label="Day 1 stage">
+          <button type="button" class="agenda__stage-tab is-active" data-stage="immersive" role="tab" aria-selected="true">Immersive Stage</button>
+          <button type="button" class="agenda__stage-tab" data-stage="knowledge" role="tab" aria-selected="false">Knowledge Stage</button>
+        </div>
+        <div class="agenda__top-rule"></div>
+          <ul class="agenda__items is-active" data-stage="immersive">
+            <li class="agenda__item">
+              <div class="agenda__item-time">08:00 - 09:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Registration &amp; Welcome Coffee</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">09:45 - 10:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Breakfast Break</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">10:45 - 10:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Folklore</h3>
+                <span class="agenda__item-tag">Performance</span>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">10:55 - 11:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Opening and Welcome</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Marko Djurdjevic</span> / Co-Founder @ Superteam Balkan</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:00 - 11:15</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The Future of Solflare</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vidor Gencel</span> / Co-Founder @ Solflare</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:15 - 11:35</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Solana and Startups</h3>
+                <span class="agenda__item-tag">Fireside Chat</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Mert Mumtaz</span> / CEO @ Helius</li>
+                <li><span class="agenda__item-speaker-name">Matija Luketin</span> / Co-Founder @ Superteam Balkan <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:35 - 11:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Serbian Financial System on Solana</h3>
+                <span class="agenda__item-tag">Fireside Chat</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Marko Djurdjevic</span> / Co-Founder @ Superteam Balkan</li>
+                <li><span class="agenda__item-speaker-name">Ognjen Popovic</span> / Assistant Minister, Financial System Department @ Ministry of Finance</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:55 - 12:25</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Internet Capital Markets</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Miller Whitehouse-Levine</span> / CEO @ Solana Policy Institute <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Philipp Vonmoos</span> / CFO @ Solana Foundation</li>
+                <li><span class="agenda__item-speaker-name">Linardo Martincevic</span> / Advisor at the Governor's Office @ Croatian National Bank</li>
+                <li><span class="agenda__item-speaker-name">Jovan Tisma</span> / CEO Founder @ BonkX</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:25 - 12:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Stocks on Solana</h3>
+                <span class="agenda__item-tag">Fireside Chat</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Ramzy Ali</span> / Head of DeFi @ Solana Foundation</li>
+                <li><span class="agenda__item-speaker-name">Chris Chung</span> / CEO &amp; Co-Founder @ Titan</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:45 - 13:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Make Tokens Great Again</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Malisha Stanojevic</span> / Founder &amp; CEO @ Streamflow</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:00 - 13:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Stablecoins on Solana</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Aditya Shetty</span> / Lead @ Superteam <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Arif Kazi</span> / Head of Growth @ Reflect Money</li>
+                <li><span class="agenda__item-speaker-name">Jorge Selva</span> / GTM Lead, EVM @ Altitude</li>
+                <li><span class="agenda__item-speaker-name">Joshua Pichardo</span> / Co-Founder &amp; COO @ SP3ND</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:30 - 13:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Parasol Perps</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Ivan Bjelajac</span> / CEO @ Parasol</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:45 - 14:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">DART - The Future of Onchain Routing</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Chris Chung</span> / CEO &amp; Co-Founder @ Titan</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:00 - 14:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Real World Assets Are Here - Now What?</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Ramzy Ali</span> / Head of DeFi @ Solana Foundation <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Urban Osvald</span> / COO @ Yieldy</li>
+                <li><span class="agenda__item-speaker-name">Alex Dragoslavic</span> / Co-Founder @ Hobba</li>
+                <li><span class="agenda__item-speaker-name">Viktor S</span> / Core Contributor @ Kamino</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:30 - 14:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Nothing goes straight up: Harvesting the volatility everyone else ignores</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Antoine Padel</span> / CEO - Founder @ DiversiFi</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:40 - 14:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Solana Gets Intentional with LI.FI</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Tanja Mladenovic</span> / Marketing Manager @ LI.FI</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:45 - 14:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Equity Perpetuals on Solana</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Kabir Sethi</span> / Growth Lead @ Phoenix Trade</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:55 - 15:05</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The Wallet Is Solana’s Next Distribution Channel</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Mohammed Salha</span> / VP of BD &amp; Strategic Partnerships @ TheMiracle</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">15:05 - 15:15</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Superteam is a cheat code</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Josip Volarević</span> / Member Success @ Superteam</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">15:15 - 15:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Pitch Perfect</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Voshy</span> / Founder @ BlastCtrl and GREED Academy</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">15:30 - 16:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Lunch Break</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">16:30 - 18:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Demo Day</h3>
+                <span class="agenda__item-tag">Competition</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Voshy</span> / Founder @ BlastCtrl and GREED Academy</li>
+                <li><span class="agenda__item-speaker-name">Vidor Gencel</span> / Co-Founder @ Solflare</li>
+                <li><span class="agenda__item-speaker-name">Branislav Sjeran</span> / Investor &amp; Advisor</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">18:30 - 19:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Group Picture</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">19:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Doors Close</h3>
+              </div>
+            </li>
+          </ul>
+          <ul class="agenda__items" data-stage="knowledge" hidden>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Mindshare Summit Intro</h3>
+                <span class="agenda__item-tag">Opening</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Voshy</span> / Founder @ BlastCtrl and GREED Academy</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:35 - 12:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Marketing Campaigns</h3>
+                <span class="agenda__item-tag">Block</span>
+              </div>
+              <p class="agenda__item-meta">Solo Talks + Q&amp;A Panel</p>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:35 - 11:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The Good, the Bad &amp; the Viral</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Paula Vulic</span> / Founder &amp; CEO @ Underground Agency</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:40 - 11:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">How to prepare a perfect launch post</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vukan Ljubojevic</span> / CEO @ Blockformer</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:45 - 11:50</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Nobody Cares. Good</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Billy Christova</span> / CEO @ BlockBuzz</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:50 - 11:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Planning a full marketing campaign</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Daniel Moutouss</span> / Marketing &amp; Growth Lead @ BlastCtrl</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:55 - 12:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">One audience, one channel, one idea</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Elizabeth McFaul (Laguna)</span> / Ecosystem Marketing Lead @ Solana Foundation</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:00 - 12:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Campaign - from idea to execution</h3>
+                <span class="agenda__item-tag">Panel + Q&amp;A</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Elizabeth McFaul (Laguna)</span> / Ecosystem Marketing Lead @ Solana Foundation</li>
+                <li><span class="agenda__item-speaker-name">Daniel Moutouss</span> / Marketing &amp; Growth Lead @ BlastCtrl</li>
+                <li><span class="agenda__item-speaker-name">Vukan Ljubojevic</span> / CEO @ Blockformer</li>
+                <li><span class="agenda__item-speaker-name">Paula Vulic</span> / Founder &amp; CEO @ Underground Agency <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:45 - 13:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Distribution and KOLs</h3>
+                <span class="agenda__item-tag">Block</span>
+              </div>
+              <p class="agenda__item-meta">Solo Talks + Debate Panel</p>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:45 - 12:50</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">web2 vs. web3: Speak Human, Ship Onchain</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Ana Djordjevic</span> / Marketing Lead @ BlockBuzz</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:50 - 12:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Content calendar and growing Twitter account organically</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vukan Ljubojevic</span> / CEO @ Blockformer</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:55 - 13:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Good BD approach can save distribution</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Tin Saric</span> / BD &amp; Marketing @ BlastCtrl</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:00 - 13:05</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Should you pay influencers to promote your project</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Luka Isailovic</span> / Head of Strategy @ R3ACH</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:05 - 13:10</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Micro KOLs as an alternative distribution aproach</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Mladen Kostov</span> / Co-Founder @ Lyra Systems</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:10 - 13:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">KOLs - blessing or disease?</h3>
+                <span class="agenda__item-tag">Debate Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Luka Isailovic</span> / Head of Strategy @ R3ACH</li>
+                <li><span class="agenda__item-speaker-name">Mladen Kostov</span> / Co-Founder @ Lyra Systems</li>
+                <li><span class="agenda__item-speaker-name">Billy Christova</span> / CEO @ BlockBuzz</li>
+                <li><span class="agenda__item-speaker-name">Zhivko Todorov</span> / GTM &amp; Growth @ LimeChain</li>
+                <li><span class="agenda__item-speaker-name">Tin Saric</span> / BD &amp; Marketing @ BlastCtrl <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:45 - 14:50</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">AI</h3>
+                <span class="agenda__item-tag">Block</span>
+              </div>
+              <p class="agenda__item-meta">Solo Talks + Q&amp;A Panel</p>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:45 - 13:50</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">How to build an AI co-founder</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vukasin Stojkov</span> / Co-Founder @ Startit</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:50 - 13:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Using AI as a marketing agency - deep integration</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Voshy</span> / Founder @ BlastCtrl and GREED Academy</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:55 - 14:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">AI loops for marketing 101</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Artem Dubinin</span> / Mighty</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:00 - 14:05</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The AI marketing trap</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Billy Christova</span> / CEO @ BlockBuzz</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:05 - 14:10</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">AI is a craftsman, you still need an artist</h3>
+                <span class="agenda__item-tag">Solo</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Daniel Moutouss</span> / Marketing &amp; Growth Lead @ BlastCtrl</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:10 - 14:50</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">AI discussion and Q&amp;A</h3>
+                <span class="agenda__item-tag">Panel + Q&amp;A</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vukasin Stojkov</span> / Co-Founder @ Startit</li>
+                <li><span class="agenda__item-speaker-name">Voshy</span> / Founder @ BlastCtrl and GREED Academy</li>
+                <li><span class="agenda__item-speaker-name">Artem Dubinin</span> / Mighty</li>
+                <li><span class="agenda__item-speaker-name">Daniel Moutouss</span> / Marketing &amp; Growth Lead @ BlastCtrl <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Mindshare Summit Outro</h3>
+                <span class="agenda__item-tag">Closing</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Voshy</span> / Founder @ BlastCtrl and GREED Academy</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">15:00 - 15:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Beyond the Hype: What VCs Really Want to Fund</h3>
+                <span class="agenda__item-tag">Panel + Q&amp;A</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Stan Nedic</span> / Partner, Investments @ V3V Ventures</li>
+                <li><span class="agenda__item-speaker-name">Branislav Sjeran</span> / Investor &amp; Advisor</li>
+                <li><span class="agenda__item-speaker-name">Iva Rakocevic</span> / Senior Investment Manager @ Elevator Ventures</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">15:30 - 16:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Lunch Break</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">16:30 - 17:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Tokenised, but not moving</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Dušan Romčević</span> / Principal Corporate and Regulatory Counsel @ B2BROKER</li>
+                <li><span class="agenda__item-speaker-name">Miller Whitehouse-Levine</span> / CEO @ Solana Policy Institute</li>
+                <li><span class="agenda__item-speaker-name">Anina Milanović</span> / Strategic Advisor to BGDX @ World Bank</li>
+                <li><span class="agenda__item-speaker-name">Ilija Rilaković</span> / Attorney at Law @ Law Firm “Law Decoded” <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">17:00 - 17:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Centralised exchanges: boring, but somebody has to do it</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Duska Nedeljkovic</span> / Head of Conferences @ Ultimate Group <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Aleksandar Matanović</span> / Founder @ ECD.rs</li>
+                <li><span class="agenda__item-speaker-name">Nikola Škorić</span> / CEO @ Electrocoin</li>
+                <li><span class="agenda__item-speaker-name">Radoje Maric</span> / CEO @ Crypto12</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">17:30 - 18:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Finding an Edge: Lessons from Investing, Trading &amp; Building</h3>
+                <span class="agenda__item-tag">Workshop</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Can Sinirlioglu</span> / Founder &amp; CEO @ Kriptok</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">18:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">From Wallet to 1,500+ Things: Use Your SOL and USDC IRL</h3>
+                <span class="agenda__item-tag">Workshop</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Raul Rodriguez</span> / Senior Web 3 Partnerships and Operations Lead @ Bitrefill</li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+      <div class="agenda__day" data-day="2">
+        <div class="agenda__day-label"><span>Day 2</span><span>THU, AUGUST 27</span></div>
+        <div class="agenda__stage-tabs" role="tablist" aria-label="Day 2 stage">
+          <button type="button" class="agenda__stage-tab is-active" data-stage="immersive" role="tab" aria-selected="true">Immersive Stage</button>
+          <button type="button" class="agenda__stage-tab" data-stage="knowledge" role="tab" aria-selected="false">Knowledge Stage</button>
+        </div>
+        <div class="agenda__top-rule"></div>
+          <ul class="agenda__items is-active" data-stage="immersive">
+            <li class="agenda__item">
+              <div class="agenda__item-time">10:00 - 11:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Breakfast Break</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:00 - 11:10</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The Network Effect of IRL: How Experiences Become Ecosystems</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Ellie Platis</span> / Head of Events @ Solana Foundation</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:10 - 11:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Making Tokens Worth Owning</h3>
+                <span class="agenda__item-tag">Debate</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vukan Ljubojevic</span> / CEO @ Blockformer <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Treggs</span> / Founder, CEO @ Seedplex</li>
+                <li><span class="agenda__item-speaker-name">Malisha Stanojevic</span> / Founder &amp; CEO @ Streamflow</li>
+                <li><span class="agenda__item-speaker-name">Aleksandar Pavlovic</span> / Co-Founder &amp; CEO @ Jurassic Finance</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:40 - 12:10</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Nobody Owes You a Retweet</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vukan Ljubojevic</span> / CEO @ Blockformer <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Elizabeth McFaul (Laguna)</span> / Ecosystem Marketing Lead @ Solana Foundation</li>
+                <li><span class="agenda__item-speaker-name">Billy Christova</span> / CEO @ BlockBuzz</li>
+                <li><span class="agenda__item-speaker-name">Daniel Moutouss</span> / Marketing &amp; Growth Lead @ BlastCtrl</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:10 - 12:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">How to not suck at go-to-market</h3>
+                <span class="agenda__item-tag">Fireside Chat</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Matthew Osofisan</span> / Head of Product Marketing @ Solana</li>
+                <li><span class="agenda__item-speaker-name">Josip Volarević</span> / Member Success @ Superteam</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:30 - 12:35</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Data Road to Wall Street</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Waddah Drobi</span> / Head of Data @ Solana</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:35 - 12:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Fixed Rate Margin Meets Solana</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Metodi Manov</span> / Product Developer @ Nolus</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:40 - 12:50</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Prediction Markets, Rebuilt: From Silos to DeFi Primitives</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Sally Meouche-Ghrawi</span> / Founder, CEO @ Predikt by 4PTO Labs</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:50 - 13:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">How Jito is making your project growing faster on all aspects</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Marouane “Kouga” Essaïdi</span> / Growth Europe @ Jito</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:00 - 13:10</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">From Audits to Standards: Building a Security Playbook for Solana</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Kenan Bešić</span> / Partner &amp; Senior Blockchain Engineer @ ChainSecurity</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:10 - 13:20</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Redesigning the read-layer. Solana RPC 2.0.</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Steve Schoonebeek</span> / Business Developer Executive @ Triton One</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:20 - 13:35</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Vibe your way to smart contracts</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Jure Granić-Skender</span> / Founding Engineer @ MetaDAO</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:35 - 13:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Who Will Own AI? The Race for Decentralized Compute</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Jesse Eisses</span> / Co-Founder @ Nosana</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:45 - 13:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Encrypted Finance and AI on Solana</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Milian Solberg</span> / Marketing Manager @ Arcium</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:55 - 14:05</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Post-Quantum Readiness of Solana: Can the Ecosystem Survive a Cryptographic Shift?</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Marija Mikić</span> / Assistant Professor @ Faculty of Mathematics Belgrade</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:05 - 14:15</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Agentic Payments: The Missing Layer(s) of the AI Economy</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Petar Atanasovski</span> / CEO @ Curvy Protocol</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:15 - 14:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Is crypto finally mainstream and why not (yet)?</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Mihajlo Miklos</span> / Head of Payments @ Solflare <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Luka Sucic</span> / Cofounder @ Money Motion</li>
+                <li><span class="agenda__item-speaker-name">Panos Mekras</span> / CEO @ Anodos Labs</li>
+                <li><span class="agenda__item-speaker-name">Martin Palazov</span> / Head of Expansion @ Paypercut</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:40 - 14:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">RustRover for Solana Developers</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vitaly Bragilevsky</span> / Head of Rust Ecosystem @ JetBrains</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:45 - 14:55</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Why Requirements Matter More Than Ever in the AI Era</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Hristo Dimitrov</span> / Head of Product @ LimeForge powered by LimeChain</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:55 - 15:05</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Accelerating your personal growth in Web 3</h3>
+                <span class="agenda__item-tag">Keynote</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Connor Bedinghaus</span> / CEO @ Hot Heads</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">15:15 - 16:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Lunch Break</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">16:00 - 18:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Solana Ecosystem Call — Live Show</h3>
+                <span class="agenda__item-tag">Live Show</span>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">18:00 - 19:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Frontier Traders Finale</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">19:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Doors Close</h3>
+              </div>
+            </li>
+          </ul>
+          <ul class="agenda__items" data-stage="knowledge" hidden>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:00 - 11:20</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The Marinade Recipe: Building Staking Infrastructure on Solana</h3>
+                <span class="agenda__item-tag">Tech Talk</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Ondrej Chaloupka</span> / Backend Engineer @ Marinade Finance</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:20 - 11:40</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The 3 Elephants in the Room: OpSec, Vibe Coding, and AI Audits</h3>
+                <span class="agenda__item-tag">Workshop</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Sebastian Banescu</span> / Founder &amp; CEO @ Adevar Labs</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">11:40 - 12:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The Solana Privacy Protocol</h3>
+                <span class="agenda__item-tag">Workshop</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Tilo Palfner</span> / DevRel @ Helius Privacy</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:00 - 12:15</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The ergonomics tax: Rust macros on Solana</h3>
+                <span class="agenda__item-tag">Rust Summit</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Rastko Misulic</span></li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:15 - 12:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Rust in Protocols &amp; Smart Contracts</h3>
+                <span class="agenda__item-tag">Rust Summit</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Luka Ciric</span> / Core Developer @ Parity</li>
+                <li><span class="agenda__item-speaker-name">Dragan Milosevic</span> / Applied Engineer @ Parity</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">12:45 - 13:15</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Building Autonomous SRE Agents in Rust</h3>
+                <span class="agenda__item-tag">Rust Summit</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Viktor Pele</span> / DKG Core Protocol Lead @ OriginTrail</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:15 - 13:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Cooking the Books: An orderbook’s journey</h3>
+                <span class="agenda__item-tag">Rust Summit</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Stelian Cujba</span> / Quant Developer @ Raven Trading</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">13:45 - 14:15</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Even 100% safe Rust won’t give you 99.9999999% reliability. But THIS will!</h3>
+                <span class="agenda__item-tag">Rust Summit</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Sergej Blinov</span> / Forward Deployed Engineer @ Ramo.io</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:15 - 14:45</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">"Is that the language or the compiler?" Understanding Rust the language vs rustc</h3>
+                <span class="agenda__item-tag">Rust Summit</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Daniel Cumming</span> / Formal Verification Engineer @ Runtime Verification Inc.</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">14:45 - 15:15</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Sub-accounts: Self-Managed Storage for SVM Programs, Beyond the Account List.</h3>
+                <span class="agenda__item-tag">Rust Summit</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Andrey Falaleev</span> / CTO @ Neon Labs</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">15:15 - 16:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Lunch Break</h3>
+              </div>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">16:00 - 16:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">The Role of Academia in Future Technologies</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Ernest Vlacic</span> / FEFA Faculty <span class="agenda__item-speaker-mod">(Moderator)</span></li>
+                <li><span class="agenda__item-speaker-name">Darko Capko</span> / Professor @ Faculty of Technical Sciences, University of Novi Sad</li>
+                <li><span class="agenda__item-speaker-name">Zorica Bogdanović</span> / Full Professor @ University of Belgrade – Faculty of Organizational Sciences</li>
+                <li><span class="agenda__item-speaker-name">Milos Obradovic</span> / Research and Teaching Assistant @ School of Electrical Engineering</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">16:30 - 17:00</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">What Founders Get Wrong Before the Raise</h3>
+                <span class="agenda__item-tag">Workshop</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Vladimir Rajkovic</span> / Attorney at Law @ Rajkovic Law Firm</li>
+                <li><span class="agenda__item-speaker-name">Dusan Stanarevic</span> / Founding Principal @ World Solver Syndicate</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">17:00 - 17:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">Retention Starts Before the Click</h3>
+                <span class="agenda__item-tag">Workshop</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Daniel Vuksanovic</span> / Co-Founder &amp; CTO @ TheMiracle</li>
+              </ul>
+            </li>
+            <li class="agenda__item">
+              <div class="agenda__item-time">17:30</div>
+              <div class="agenda__item-heading">
+                <h3 class="agenda__item-title">How to properly educate about crypto</h3>
+                <span class="agenda__item-tag">Panel</span>
+              </div>
+              <ul class="agenda__item-speakers">
+                <li><span class="agenda__item-speaker-name">Voshy</span> / Founder @ BlastCtrl and GREED Academy</li>
+                <li><span class="agenda__item-speaker-name">Zorica Bogdanović</span> / Full Professor @ University of Belgrade – Faculty of Organizational Sciences</li>
+                <li><span class="agenda__item-speaker-name">Djuradj Djuric</span> / Co-Founder @ Cognios</li>
+                <li><span class="agenda__item-speaker-name">Artem Dubinin</span> / Mighty</li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+<script>
+(function () {
+  var grid = document.querySelector('.agenda__grid');
+  var section = document.querySelector('.agenda');
+  var daySwitch = document.querySelector('.agenda__day-switch');
+
+  function setPane(scope, attr, value) {
+    scope.querySelectorAll('.agenda__items').forEach(function (pane) {
+      var on = pane.dataset[attr] === value;
+      pane.classList.toggle('is-active', on);
+      if (on) { pane.removeAttribute('hidden'); } else { pane.setAttribute('hidden', ''); }
+    });
+  }
+
+  // Stage toggle — scoped to one day column, mirrors the site's class contract.
+  document.querySelectorAll('.agenda__stage-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var day = tab.closest('.agenda__day');
+      if (!day) return;
+      day.querySelectorAll('.agenda__stage-tab').forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      setPane(day, 'stage', tab.dataset.stage);
+    });
+  });
+
+  // Day switch — mobile only (the bar is display:none above 1023px).
+  daySwitch.querySelectorAll('.agenda__day-switch-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      daySwitch.querySelectorAll('.agenda__day-switch-tab').forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      grid.classList.remove('is-day-1', 'is-day-2');
+      grid.classList.add('is-day-' + tab.dataset.day);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  });
+
+  // Dock the stage tabs directly beneath the sticky day bar.
+  function syncOffset() {
+    section.style.setProperty('--day-switch-h', daySwitch.offsetHeight + 'px');
+  }
+  syncOffset();
+  window.addEventListener('resize', syncOffset);
+})();
+</script>
+</body>
+</html>
