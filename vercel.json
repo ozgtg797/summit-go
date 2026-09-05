@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/breakpoint", "destination": "https://esim.solanasummit.rs/breakpoint", "statusCode": 307 }
+  ]
+}
